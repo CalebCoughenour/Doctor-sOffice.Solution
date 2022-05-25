@@ -1,0 +1,40 @@
+@model DoctorOffice.Models.Patient
+
+<h2>Patient Details</h2>
+<hr />
+<h3>@Html.Label("Patient"): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.Label("Appt Date"): @Html.DisplayFor(model => model.ApptDate)</h3>
+<h3>@Html.Label("Birthdate"): @Html.DisplayFor(model => model.Birthdate)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This item does not belong to any category</p>
+}
+else
+{
+  <h4>Doctors For @Model.Name:</h4>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Doctor.Name</li>
+    }
+  </ul>
+}
+
+<ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@join.Doctor.Name</li>
+    @using (@Html.BeginForm("DeleteDoctor", "Patients"))
+    {
+      @Html.Hidden("joinId", @join.DoctorPatientId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+</ul>
+
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Add Doctor To Patient", "AddDoctor", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Back to Doctors", "Index")</p>
+<p>@Html.ActionLink("Back Home", "Index", "Home")</p>
