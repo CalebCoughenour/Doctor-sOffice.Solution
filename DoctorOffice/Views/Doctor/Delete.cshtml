@@ -1,0 +1,11 @@
+@model DoctorOffice.Models.Doctor
+
+<h3>Are you sure you would like to delete @Model.Name?</h3>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+@Html.ActionLink("Back To Doctors", "Index")
+@Html.ActionLink("Back Home", "Index", "Home")

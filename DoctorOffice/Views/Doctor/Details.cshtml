@@ -1,0 +1,26 @@
+@model DoctorOffice.Models.Doctor
+
+<h4>Details:</h4>
+<hr />
+
+
+<h4>@Model.Name's Specialty: @Model.Specialty</h4>
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This doctor does not have any patients yet</p>
+}
+else
+{
+  <h4>Patients:</h4>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Patient.Name</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit This Doctor", "Edit", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Back to Doctors", "Index")</p>
+<p>@Html.ActionLink("Back Home", "Index", "Home")</p>
