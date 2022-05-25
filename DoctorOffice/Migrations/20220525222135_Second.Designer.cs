@@ -2,14 +2,16 @@
 using DoctorOffice.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Project.Migrations
 {
     [DbContext(typeof(DoctorOfficeContext))]
-    partial class DoctorOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20220525222135_Second")]
+    partial class Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,9 +67,6 @@ namespace Project.Migrations
 
                     b.Property<string>("Birthdate")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
