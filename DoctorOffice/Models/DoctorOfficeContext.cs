@@ -8,7 +8,9 @@ namespace DoctorOffice.Models
     public DbSet<Patient> Patients { get; set; }
     public DbSet<DoctorPatient> DoctorPatient { get; set; }
 
-    public DoctorOfficeContext(DbContextOptionsBuilder optionsBuilder) : base(options) 
+    public DoctorOfficeContext(DbContextOptions options) : base(options) {}
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     { 
       optionsBuilder.UseLazyLoadingProxies();
     }
