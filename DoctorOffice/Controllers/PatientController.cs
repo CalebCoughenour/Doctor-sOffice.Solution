@@ -17,12 +17,6 @@ namespace DoctorOffice.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
-    {
-      List<Patient> model = _db.Patients.OrderBy(model => model.ApptDate).ToList();
-      return View(model);
-    }
-
     public ActionResult Create()
     {
       ViewBag.DoctorId = new SelectList(_db.Doctors, "DoctorId", "Name");
